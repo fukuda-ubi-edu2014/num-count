@@ -44,7 +44,7 @@ int main(int argc, char *argv[])
     int ret;                    /* return value handler */
 
     /* handle arguments */
-    if ( (argc < 2) || (argc > MAX_ARGS + 1) )
+    if ( (argc < 2) || (argc > MAX_ARGS + 2) )
     {
         fprintf(stderr, "Invalid arguments.\n");
         usage();
