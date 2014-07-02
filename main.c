@@ -93,7 +93,7 @@ static int load_data(char *filename, int *buf)
 {
     FILE *dataf = NULL;         /* data file pointer */
     char *ret;
-    char linebuf[5];            /* buffer for line read */
+    char linebuf[6];            /* buffer for line read */
 
     /* open data file */
     dataf = fopen(filename, "r");
