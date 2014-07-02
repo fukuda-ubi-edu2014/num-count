@@ -5,7 +5,7 @@
 
 CC	= gcc
 TARGET	= num_count
-CFLAGS	=
+CFLAGS	= -Wall
 OBJ	= main.o
 LDFLAGS	= 
 

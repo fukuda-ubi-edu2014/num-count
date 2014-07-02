@@ -132,7 +132,7 @@ static int count_data(int target, int *buf)
 
     while (*buf >= 0)
     {
-        if (*buf = target)
+        if (*buf == target)
             result++;
         buf++;
     }
