@@ -38,7 +38,7 @@ static int count_data(int target, int *buf);
  *======================================================================*/
 int main(int argc, char *argv[])
 {
-    int data[MAX_DATA+1] = {-1};/* input numbers; initialize with -1 */
+    int data[MAX_DATA+1];       /* input numbers */
     int arg_cnt;                /* counter for processing arguments */
     int arg_num;                /* number specified by an argument */
     int ret;                    /* return value handler */
@@ -50,6 +50,9 @@ int main(int argc, char *argv[])
         usage();
         exit(-1);
     }
+
+    /* initialize data with -1 */
+    memset(data, 0xFF, sizeof(data));
 
     /* open input file and load data on to number[] */
     ret = load_data(argv[1], data);
@@ -102,7 +105,7 @@ static int load_data(char *filename, int *buf)
     }
 
     /* read from data file */
-    while (*buf == -1)
+    while (*buf < 0)
     {
         ret = fgets(linebuf, sizeof(linebuf)-1, dataf);
         if (!ret)
@@ -127,7 +130,7 @@ static int count_data(int target, int *buf)
 {
     int result = 0;
 
-    while (*buf != -1)
+    while (*buf >= 0)
     {
         if (*buf = target)
             result++;
