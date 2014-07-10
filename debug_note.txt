@@ -1,0 +1,27 @@
+---------------------------
+○コンパイルが通らない
+・L132
+変更前	if (*buf = target)
+
+変更後	if (*buf == target)
+
+変更理由：条件判定式の間違い
+---------------------------
+○./num_count test.dat 10でSegmentation fault: 11
+・L43
+変更前	int data[MAX_DATA+1] = {-1};
+
+変更後	int data[MAX_DATA+1] = {};
+		for(i = 0; i < (MAX_DATA + 1); i++)data[i] = -1;
+
+変更理由：初期化が-1をdataに入っていただけだったため、load_data()で1つ目しか値が取れていなかった。for文で全要素-1にした。
+---------------------------
+○./num_count test.dat 0で0が5個あると表示される
+・L115
+変更前	ret = fgets(linebuf, sizeof(linebuf)-1, dataf);
+
+変更後	ret = fgets(linebuf, sizeof(linebuf), dataf);
+
+変更理由：sizeof(linebuf)-1は4である。そのため3桁の数字を格納したところでfgetsが終わってた('\0'を含めて)ので改行を0としてカウントしていた。
+		3桁の数字を改行まで格納するには第２引数にsizeof(linebuf)をそのまま指定することで3桁文字+'\n'+'\0'を格納できる。
+---------------------------
