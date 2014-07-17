@@ -47,7 +47,7 @@ int main(int argc, char *argv[])
     for(i = 0; i < (MAX_DATA + 1); i++)data[i] = -1;
 
     /* handle arguments */
-    if ( (argc < 2) || (argc > MAX_ARGS + 1) )
+    if ( (argc < 2) || (argc > MAX_ARGS + 2) )
     {
         fprintf(stderr, "Invalid arguments.\n");
         usage();
